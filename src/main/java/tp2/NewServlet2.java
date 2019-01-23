@@ -36,7 +36,7 @@ public class NewServlet2 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             DAO dao = new DAO(DataSourceFactory.getDataSource());
-            List result= dao.listStates();
+            List<String> result= dao.listStates();
             
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -45,13 +45,13 @@ public class NewServlet2 extends HttpServlet {
             out.println("<title>Servlet NewServlet2</title>");            
             out.println("</head>");
             out.println("<body>");
-                out.println("<form action='NewServlet1.java'>");
+                out.println("<form action='NewServlet1'>");
                     out.println("<select>");
-                        while(result.size()>0){
-                            out.println("<option value='"+result+"'>"+result+"</option>");
+                        for(String state: result){
+                            out.println("<option value='"+state+"'>"+state+"</option>");
                         }
                         out.println("</select>");
-                    out.println("<input type=\"submit\" value=\"Envoyer\" />");
+                    out.println("<input type='submit'>");
                 out.println("</form>");
             out.println("</body>");
             out.println("</html>");
